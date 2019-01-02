@@ -1,0 +1,30 @@
+<div class="row">
+    {{> qrcode}}
+    <br>
+    {{#each codigo}}
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title d-flex justify-content-between align-items-center">
+                    {{tipovehiculo}} <a href="/codigo/edit/{{_id}}"><i class="fas fa-edit"></i></a>
+                </h4>
+                <p>{{descripcion}}</p>
+                <form action="/codigo/eliminar/{{_id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-danger btn-block btn-sm" type="submit">
+                    eliminar
+                </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="card mx-auto">
+        <div class="card-body">
+            <h1>Bienvenido {{user.name}}</h1>
+            <p class="lead">Aun no tienes ningun vehiculo registrado</p>
+            <a href="/codigo/add" class="btn btn-success btn-block">Registra uno!</a>
+        </div>
+    </div>
+    {{/each}}
+</div>
